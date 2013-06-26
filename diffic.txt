@@ -1,0 +1,62 @@
+easy 		= 75  => 25--125 (dev = 50) (i.e. -dev, +dev)
+normal 		= 125 => 75--175 (dev = 50) (i.e. -dev, +dev)
+hard 		= 175 => 125-275 (dev = 50lo, 100hi) (i.e. -dev, +dev*2)
+very hard 	= 275 => 225-375 (dev = 50lo, 100hi) (i.e. -dev, +dev*2)
+impossible 	= 375 => 325-575 (dev = 50lo, 200hi) (i.e. -dev, +dev*4)
+2+2 - 40
+2/3 - 100
+
+FACTOR		POINTS
+number of vals:
+2		 5pts
+3		 10pts
+4		 15pts
+5		 25pts
+6		 35pts
+7		 45pts
+8		 60pts
+9		 75pts
+10		 90pts
+11		 105pts
+12		 120pts
+13		 150pts
+
+values:
+     x<-500	 70pts
+-500<x<-200	 60pts	
+-200<x<-100	 50pts
+-100<x<-50	 40pts
+-50<x<-25	 30pts
+-25<x<0		 20pts
+0<x<25		 10pts
+25<x<50		 15pts	
+50<x<100	 20pts
+100<x<200	 40pts
+200<x<500	 50pts
+500<x		 60pts
+
+operators:
+plus		 20pts
+minus		 40pts
+multiply	 60pts
+divide		 80pts
+
+answers:
+     y<-500	 100pts
+-500<y<-200	 85pts
+-200<y<-100	 65pts
+-100<y<-50	 45pts
+-50<y<0		 25pts
+0<y<50		 10pts
+50<y<100	 20pts
+100<y<200	 40pts
+200<y<500	 60pts
+500<y		 80pts	
+
+decimals:
+(no decimal)
+value%1 == 0	 15pts
+(decimal)
+value%1 != 0	 70pts	
+
+no one point value can take up more than 30% of the difficulty
