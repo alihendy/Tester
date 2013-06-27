@@ -16,9 +16,18 @@ namespace Tester
             PracticeProbs pp = new PracticeProbs();
             pp.printYo();
             Console.WriteLine("\n" + pp.nthOfFib(100));
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1000; i++)
             {
-
+                //if (i < 20)
+                //    smtest.diff = "EASY";
+                //else if (i >= 20 && i < 40)
+                //    smtest.diff = "MED";
+                //else if (i >= 40 && i < 60)
+                //    smtest.diff = "HARD";
+                //else if (i >= 60 && i < 80)
+                //    smtest.diff = "VHARD";
+                //else
+                    smtest.diff = "IMP";
 
                 smtest.generateProblem();
 
@@ -40,8 +49,9 @@ namespace Tester
                 //    //Console.WriteLine("-4/2 = " + num);
                 //    //Console.WriteLine("num % 1 = " + num % 1 + "\n");
                 //    allowedPoints = Convert.ToInt32(Console.ReadLine());
-                Console.ReadKey();
+                //Console.ReadKey();
             }
+            Console.ReadKey();
         }
     }
 }

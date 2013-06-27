@@ -9,18 +9,18 @@ namespace Tester
 {
     public class smtest
     {
-        public const int basic = 500;
-        public static int allowedPoints = 500;
         public static int totalPoints = 0;
-        public static int easyLoBound = 0, easyHiBound = 101;
-        public static int easyLoOp = 0, easyHiOp = 2, ValBound = 2, ValDev = 0;
+        public static int allowedPoints;
+        public static int basic;
+        public static char[] ops;
+        public static string diff = "EASY";
 
         public static int getNumValues()
         {
             Console.WriteLine("in getNumValues");
             int numVals = 2;
             int numValPoints = basic / 5; //not to exceed 20% of the total difficulty
-            int maxNumVals = numValPoints / 10 + 1;
+            int maxNumVals = (numValPoints / 10 + 1) < numVals ? numVals + 2 : (numValPoints / 10 + 1);
             numVals = new Random().Next(numVals, maxNumVals);
             int points = numVals * 5;
             allowedPoints -= points;
@@ -32,7 +32,7 @@ namespace Tester
         {
             Console.WriteLine("in getOps");
             int numOps = numVals - 1;
-            char[] ops = new char[numOps];
+            ops = new char[numOps];
             int opPoints = 0;
             int maxAllowedOpPoints = basic / 5;
             int rando = 0;
@@ -83,25 +83,54 @@ namespace Tester
             int totalValuePoints = 0;
 
             if (maxAllowedPoints <= 25)
-                maxAllowedValue = 51;
+                maxAllowedValue = 26;
             else if (maxAllowedPoints > 25 && maxAllowedPoints <= 35)
-                maxAllowedValue = 76;
+                maxAllowedValue = 51;
             else if (maxAllowedPoints > 35 && maxAllowedPoints <= 55)
-                maxAllowedValue = 101;
+                maxAllowedValue = 76;
             else if (maxAllowedPoints > 55 && maxAllowedPoints <= 75)
-                maxAllowedValue = 126;
+                maxAllowedValue = 101;
             else
-                maxAllowedValue = 151;
+                maxAllowedValue = 126;
 
             int[] vals = new int[numVals];
             int value;
             for (int i = 0; i < numVals; i++)
             {
-                value = new Random().Next(0, maxAllowedValue);
-                //Console.WriteLine(value);
-                totalValuePoints += Math.Abs(value / 10);
-                vals[i] = value;
-                maxAllowedValue -= Math.Abs(value / 10);
+                if (i < ops.Length && ops[i] == '/')
+                {
+                    int divisor = new Random().Next(2, maxAllowedValue / 10);
+                    Thread.Sleep(50);
+                    int tempQuot = new Random().Next(2, maxAllowedValue / 10);
+                    int dividend = divisor * tempQuot;
+                    vals[i] = dividend;
+                    vals[++i] = divisor;
+                    totalValuePoints += Math.Abs(dividend / 10);
+                    totalValuePoints += Math.Abs(divisor / 10);
+                    maxAllowedValue -= Math.Abs(dividend / 10);
+                    maxAllowedValue -= Math.Abs(divisor / 10);
+                }
+                else if ((i < ops.Length && ops[i] == '*') || (i > 0 && ops[i-1] == '*'))
+                {
+                    int multiplicand = new Random().Next(2, maxAllowedValue / 8);
+                    Thread.Sleep(50);
+                    int multiplier = new Random().Next(2, maxAllowedValue / 8);
+                    vals[i] = multiplicand;
+                    vals[++i] = multiplier;
+                    totalValuePoints += Math.Abs(multiplicand / 10);
+                    totalValuePoints += Math.Abs(multiplier / 10);
+                    maxAllowedValue -= Math.Abs(multiplicand / 10);
+                    maxAllowedValue -= Math.Abs(multiplier / 10);
+                }
+                else
+                {
+                    value = new Random().Next(0, maxAllowedValue);
+                    //Console.WriteLine(value);
+                    totalValuePoints += Math.Abs(value / 10);
+                    vals[i] = value;
+                    maxAllowedValue -= Math.Abs(value / 10);
+                }
+                
                 Thread.Sleep(100);
             }
             //Console.WriteLine("points = " + totalPoints);
@@ -119,12 +148,25 @@ namespace Tester
             int[] values;
             char[] ops;
             totalPoints = 0;
-            allowedPoints = 500;
+            int baseVal, dev = 50;
+            
+            switch (diff)
+            {
+                case "EASY": baseVal = 75; dev *= 1; break;
+                case "MED": baseVal = 125; dev *= 1; break;
+                case "HARD": baseVal = 175; dev *= 2; break;
+                case "VHARD": baseVal = 275; dev *= 2; break;
+                case "IMP": baseVal = 375; dev *= 4; break;
+                default: baseVal = 75; dev *= 1; break;
+            }
+            basic = new Random().Next(baseVal-dev, baseVal+dev+1);
+            Console.WriteLine("basic = " + basic + " baseVal = " + baseVal + "\n");
+            allowedPoints = basic;
             //while (totalPoints >= basic + 50 || totalPoints <= basic-50)
             //{
                 numVals = getNumValues();
-                values = getValue(numVals);
                 ops = getOperators(numVals);
+                values = getValue(numVals);
                 totalPoints = basic - allowedPoints;
             //}
             Console.Write(values[0]);
@@ -134,7 +176,6 @@ namespace Tester
             }
             Console.WriteLine();
             Console.WriteLine("Total points = " + totalPoints);
-
         }
 
     }
