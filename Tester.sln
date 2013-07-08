@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{78655E6A-72D4-4212-BEFD-0741357C5CB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{7F9B3EEB-066D-47B3-AE3B-65F127B2D26F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{78655E6A-72D4-4212-BEFD-0741357C5CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78655E6A-72D4-4212-BEFD-0741357C5CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78655E6A-72D4-4212-BEFD-0741357C5CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F9B3EEB-066D-47B3-AE3B-65F127B2D26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F9B3EEB-066D-47B3-AE3B-65F127B2D26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F9B3EEB-066D-47B3-AE3B-65F127B2D26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F9B3EEB-066D-47B3-AE3B-65F127B2D26F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

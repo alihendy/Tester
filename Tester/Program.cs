@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Extensions;
 
 
 namespace Tester
@@ -14,9 +15,11 @@ namespace Tester
         static void Main(string[] args)
         {
             PracticeProbs pp = new PracticeProbs();
+            String jerk = "POOP";
+            jerk.derp();
             pp.printYo();
-            Console.WriteLine("\n" + pp.nthOfFib(100));
-            for (int i = 0; i < 1000; i++)
+            Console.WriteLine("\n" + pp.nthOfFib(20));
+            for (int i = 0; i < 1; i++)
             {
                 //if (i < 20)
                 //    smtest.diff = "EASY";

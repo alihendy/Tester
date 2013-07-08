@@ -40,9 +40,10 @@ namespace Tester
             for (int i = 0; i < numOps; i++)
             {
                 rando = new Random().Next(0,maxAllowedOpPoints);
+                op = (rando < 20) ? '+' : (rando < 40) ? '-' : (rando < 80) ? '*' : '/';
                 if (rando < 20)
                 {
-                    op = '+'; 
+                    op = '+';
                 }
                 else if (rando >= 20 && rando < 40)
                 {
@@ -162,13 +163,10 @@ namespace Tester
             basic = new Random().Next(baseVal-dev, baseVal+dev+1);
             Console.WriteLine("basic = " + basic + " baseVal = " + baseVal + "\n");
             allowedPoints = basic;
-            //while (totalPoints >= basic + 50 || totalPoints <= basic-50)
-            //{
-                numVals = getNumValues();
-                ops = getOperators(numVals);
-                values = getValue(numVals);
-                totalPoints = basic - allowedPoints;
-            //}
+            numVals = getNumValues();
+            ops = getOperators(numVals);
+            values = getValue(numVals);
+            totalPoints = basic - allowedPoints;
             Console.Write(values[0]);
             for (int i = 0; i < ops.Length; i++)
             {
